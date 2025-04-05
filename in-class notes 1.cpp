@@ -1,4 +1,7 @@
 /*
+4/3/25 In-Class Notes
+Veronica Martinez
+
 one of the most important parts about writing code is making comments for organization purposes
     - it makes the program more legible for others
     - it explains what the code does & why
