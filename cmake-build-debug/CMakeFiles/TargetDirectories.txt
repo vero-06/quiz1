@@ -1,0 +1,3 @@
+C:/Users/Veroq/CLionProjects/quiz 1/cmake-build-debug/CMakeFiles/quiz_1.dir
+C:/Users/Veroq/CLionProjects/quiz 1/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Veroq/CLionProjects/quiz 1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
