@@ -11,7 +11,7 @@ class Fraction;
 int main() {
 
     //PROBLEM 1 PART 1: power of 2 loop
-    int num;
+    int num = 4; //test value
     test_power();
     bool result = is_power_of_2_loop(num);
     if (result == true) {
@@ -28,7 +28,7 @@ int main() {
     }
 
     //PROBLEM 2
-    int val;
+    int val = 4; //test value
     bool result2 = prime(val);
     if (result2 == true) {
         printf("PASS\n", val);
@@ -69,9 +69,9 @@ bool is_power_of_2_nonloop(int num) {
 //used Google to help me make the test (I didn't know how)
 void test_power() {
     bool result1, result2;
-    int test_values[] = {1,2,3,4,5,6,7,8,15,16,31,32,33,100};
+    int test_values[] = {1,2,3,4,5,6,7,8,15,16,31,32,33,100}; //testing vaLues
     bool correct[] = {false,true,false,true,false,false,false,true,false,true,false,true,false,false};
-        for (int i=0;i<14;i++) {
+        for (int i=0;i<14;i++) { //14 is the number of values I have
             result1 = is_power_of_2_loop(test_values[i]);
             result2 = is_power_of_2_nonloop(test_values[i]);
             if (result1 == correct[i] && result2 ==correct[i]) {
@@ -108,6 +108,8 @@ class Fraction {
 
 
     Fraction(int numerator, int denominator) {
+        this->numerator = numerator;
+        this->denominator = denominator;
         to_string();
     }
 
@@ -129,11 +131,20 @@ class Fraction {
             }
             divider++;
         }
-        return in;
+        return *this;
     }
 };
 
 void test () {
-    Fraction inputs [3] = {Fraction (1,2), Fraction (2,4), Fraction (4,2)};
-    Fraction outputs [3] = {Fraction(1,2), Fraction(2,1), Fraction (3,4)};
+    Fraction inputs [3] = {Fraction (1,2), Fraction (2,4), Fraction (4,2)}; //testing values
+    Fraction outputs [3] = {Fraction(1,2), Fraction(2,1), Fraction (3,4)}; //testing values
+
+    for (int i=0;i<3;i++) {
+        Fraction reduced = inputs[i].reduce();
+        if (reduced == outputs[i]) {
+            std::cout << "PASS" << std::endl;
+        } else {
+            std::cout << "FAIL" << std::endl;
+        }
+    }
 }
