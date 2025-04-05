@@ -1,21 +1,23 @@
 #include <iostream>
 
 bool is_power_of_2_loop(int);
+void test_power_loop();
 bool is_power_of_2_nonloop(int);
 bool prime(int);
+class Fraction;
+
 
 int main() {
 
     //PROBLEM 1 PART 1: power of 2 loop
     int num;
-    std::cout << "Enter a number to see if it is a power of 2: ";
-    std::cin >> num;
     bool result = is_power_of_2_loop(num);
     if (result == true) {
         printf("%d is a power of 2 (loop method used)\n", num);
     } else {
         printf("%d is not a power of 2 (loop method used)\n", num);
     }
+    printf(test_power_loop());
     //PROBLEM 1 PART 2: power of 2 nonloop
     bool answer = is_power_of_2_nonloop(num);
     if (answer == true) {
@@ -26,8 +28,6 @@ int main() {
 
     //PROBLEM 2
     int val;
-    std::cout << "Enter a number to see if it is a prime number: ";
-    std::cin >> val;
     bool result2 = prime(val);
     if (result2 == true) {
         printf("PASS\n", val);
@@ -36,6 +36,8 @@ int main() {
     }
 
     //PROBLEM 3
+    int numerator;
+    int denominator;
 
 
     return 0;
@@ -51,6 +53,19 @@ bool is_power_of_2_loop(int num) {
         }
     }
     return true;
+}
+
+//used Google and ChatGPT to help me make the test (I didn't know how)
+void test_power_loop() {
+    int test_values[] = {1,2,3,4,5,6,7,8,15,16,31,32,33,100};
+    int size = sizeof(test_values)/sizeof(test_values[0]);
+    std::cout << "Testing:\n";
+    for (int i = 0; i < size; i++) {
+        int number = test_values[i];
+        bool result = is_power_of_2_loop(number);
+        std::cout << number << " " << (result ? "PASS" : "FAIL") << std::endl;
+    }
+
 }
 
 //non-loop
@@ -79,3 +94,36 @@ bool prime(int num) {
         }
     }
 }
+
+class Fraction {
+    public:
+    int numerator;
+    int denominator;
+
+
+    Fraction(int numerator, int denominator) {
+        to_string();
+    }
+
+    std::string to_string() {
+        return std::to_string(numerator) + "/" + std::to_string(denominator);
+    }
+
+    bool operator == (Fraction && other) {
+        return this->numerator == other.numerator && this->denominator == other.denominator;
+    }
+
+    Fraction reduce(Fraction in) {
+        int divider = 2;
+        while (divider <= in.numerator && divider <= in.denominator) {
+            if (in.numerator % divider == 0 && in.denominator % divider == 0) {
+                in.numerator/=divider;
+                in.denominator/=divider;
+                continue;
+            }
+            divider++;
+        }
+        return in;
+    }
+};
+
