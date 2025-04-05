@@ -28,7 +28,7 @@ int main() {
     }
 
     //PROBLEM 2
-    int val = 8; //test value (no significance or reason as to why I chose 8)
+    int val = 128; //test value (no significance or reason as to why I chose 128)
     bool result2 = prime(val);
     if (result2 == true) {
         printf("PASS\n", val);
