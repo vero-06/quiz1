@@ -1,9 +1,10 @@
 #include <iostream>
 
 bool is_power_of_2_loop(int);
-void test_power_loop();
 bool is_power_of_2_nonloop(int);
+void test_power();
 bool prime(int);
+void test();
 class Fraction;
 
 
@@ -11,19 +12,19 @@ int main() {
 
     //PROBLEM 1 PART 1: power of 2 loop
     int num;
+    test_power();
     bool result = is_power_of_2_loop(num);
     if (result == true) {
-        printf("%d is a power of 2 (loop method used)\n", num);
+        printf("%d is a power of 2\n", num);
     } else {
-        printf("%d is not a power of 2 (loop method used)\n", num);
+        printf("%d is not a power of 2\n", num);
     }
-    printf(test_power_loop());
     //PROBLEM 1 PART 2: power of 2 nonloop
     bool answer = is_power_of_2_nonloop(num);
     if (answer == true) {
-        printf("%d is a power of 2 (nonloop method used)\n", num);
+        printf("%d is a power of 2\n", num);
     } else {
-        printf("%d is not a power of 2 (nonloop method used)\n", num);
+        printf("%d is not a power of 2\n", num);
     }
 
     //PROBLEM 2
@@ -38,7 +39,7 @@ int main() {
     //PROBLEM 3
     int numerator;
     int denominator;
-
+    test();
 
     return 0;
 }
@@ -55,19 +56,6 @@ bool is_power_of_2_loop(int num) {
     return true;
 }
 
-//used Google and ChatGPT to help me make the test (I didn't know how)
-void test_power_loop() {
-    int test_values[] = {1,2,3,4,5,6,7,8,15,16,31,32,33,100};
-    int size = sizeof(test_values)/sizeof(test_values[0]);
-    std::cout << "Testing:\n";
-    for (int i = 0; i < size; i++) {
-        int number = test_values[i];
-        bool result = is_power_of_2_loop(number);
-        std::cout << number << " " << (result ? "PASS" : "FAIL") << std::endl;
-    }
-
-}
-
 //non-loop
 bool is_power_of_2_nonloop(int num) {
     if (num==1) {
@@ -77,6 +65,23 @@ bool is_power_of_2_nonloop(int num) {
     }
     return false;
 }
+
+//used Google to help me make the test (I didn't know how)
+void test_power() {
+    bool result1, result2;
+    int test_values[] = {1,2,3,4,5,6,7,8,15,16,31,32,33,100};
+    bool correct[] = {false,true,false,true,false,false,false,true,false,true,false,true,false,false};
+        for (int i=0;i<14;i++) {
+            result1 = is_power_of_2_loop(test_values[i]);
+            result2 = is_power_of_2_nonloop(test_values[i]);
+            if (result1 == correct[i] && result2 ==correct[i]) {
+                std::cout << "PASS" << std::endl;
+            } else {
+                std::cout << "FAIL" << std::endl;
+            }
+        }
+    return;
+    }
 
 //prime
 bool prime(int num) {
@@ -93,6 +98,7 @@ bool prime(int num) {
             }
         }
     }
+    return false;
 }
 
 class Fraction {
@@ -127,3 +133,7 @@ class Fraction {
     }
 };
 
+void test () {
+    Fraction inputs [3] = {Fraction (1,2), Fraction (2,4), Fraction (4,2)};
+    Fraction outputs [3] = {Fraction(1,2), Fraction(2,1), Fraction (3,4)};
+}
