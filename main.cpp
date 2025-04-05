@@ -70,7 +70,7 @@ bool is_power_of_2_nonloop(int num) {
 void test_power() {
     bool result1, result2;
     int test_values[] = {1,2,3,4,5,6,7,8,15,16,31,32,33,100}; //testing vaLues
-    bool correct[] = {false,true,false,true,false,false,false,true,false,true,false,true,false,false};
+    bool correct[] = {true,true,false,true,false,false,false,true,false,true,false,true,false,false};
         for (int i=0;i<14;i++) { //14 is the number of values I have
             result1 = is_power_of_2_loop(test_values[i]);
             result2 = is_power_of_2_nonloop(test_values[i]);
@@ -117,16 +117,16 @@ class Fraction {
         return std::to_string(numerator) + "/" + std::to_string(denominator);
     }
 
-    bool operator == (Fraction && other) {
+    bool operator == (const Fraction & other) {
         return this->numerator == other.numerator && this->denominator == other.denominator;
     }
 
-    Fraction reduce(Fraction in) {
+    Fraction reduce() {
         int divider = 2;
-        while (divider <= in.numerator && divider <= in.denominator) {
-            if (in.numerator % divider == 0 && in.denominator % divider == 0) {
-                in.numerator/=divider;
-                in.denominator/=divider;
+        while (divider <= numerator && divider <= denominator) {
+            if (numerator % divider == 0 && denominator % divider == 0) {
+                numerator/=divider;
+                denominator/=divider;
                 continue;
             }
             divider++;
