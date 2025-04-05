@@ -11,7 +11,7 @@ class Fraction;
 int main() {
 
     //PROBLEM 1 PART 1: power of 2 loop
-    int num = 64; //test value
+    int num = 128; //test value (no significance or reason as to why I chose 128)
     test_power();
     bool result = is_power_of_2_loop(num);
     if (result == true) {
@@ -28,7 +28,7 @@ int main() {
     }
 
     //PROBLEM 2
-    int val = 64; //test value
+    int val = 8; //test value (no significance or reason as to why I chose 8)
     bool result2 = prime(val);
     if (result2 == true) {
         printf("PASS\n", val);
